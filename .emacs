@@ -56,7 +56,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-	(cmake-font-lock cmake-mode fic-ext-mode restart-emacs powerline company-jedi fic-mode jedi spacemacs-theme helm helm-rtags irony-eldoc flycheck-irony company-irony irony flycheck company emacs-cquery cyberpunk-2019-theme cyberpunk-theme ansi package-build epl git commander f dash s fill-column-indicator)))
+	(cmake-font-lock cmake-mode fic-ext-mode restart-emacs powerline company-jedi fic-mode jedi spacemacs-theme helm helm-rtags irony-eldoc flycheck-irony company-irony irony flycheck company cyberpunk-2019-theme cyberpunk-theme ansi package-build epl git commander f dash s fill-column-indicator)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
