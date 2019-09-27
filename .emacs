@@ -27,36 +27,34 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
-	 [default default default italic underline success warning error])
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
-	 ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+   ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(custom-enabled-themes (quote (black-space)))
  '(custom-safe-themes
-	 (quote
-		("58a7093cb01b18092594e22cde0697c124378f6f4f7d8bd0f335daae8cca847c" "e51b64b3ee40a255d533943383d8b95e8860404dc3fee4a12d85ad6df88520e8" "21028363704c73962f891ffaaf5fbeff6e15f3ff14d2cdc91717d1f35520fd75" "1fc67b18dc7c2611168b0d934fa8ca52139260f135d00c41c15839c5ff03956e" "e0f2ab62a01d1e0ac3a6c0a88f86ab0f2e566e6c1de1690948d03fc926ffc018" "d01f39317b2c37ec69aebed69cebf7188233c0c8b637a2340526c43928ff9103" "96181346449fb761db91cdce0ef2ee0d18f7548e8f45837a34a08e788d566e4e" "6c2f5ea7513cb10481f3e7a1a1f85cbf198a16c66d54d65f214b0e7258298e88" "e251fa7d4089e7ec8011edaea7092c44157fce2721bfc39b4be0ad58d3d5bd77" "30367627abb6973bb45355639fe1d97f4b6e36598542e5258ca5f614531737f1" "03d149f1486c23cd49ee3a9035192fc391facaea70d7f42c2e6adf578996c0e8" "caf9e3e3ffa34a132bf1372ac48ae5ff3a94f9da171f87469d6899b5cb704cd0" "efeb0783a4cfb349d9f3f0ee53ead36be1d1febb642e7191a37511a2bbe51a37" "5b8a79dffd95c493aa0e67408e60fb6dc6dabc18d2735c59238202835a78129d" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "6bc387a588201caf31151205e4e468f382ecc0b888bac98b2b525006f7cb3307" "7803ff416cf090613afd3b4c3de362e64063603522d4974bcae8cfa53cf1fd1b" default)))
+   (quote
+    ("0dc9276443b11bead7db8dcdc9f18f9942e1a76f98e75f01962c568cda23f9e4" "95c10e614e5771a97865be498452c281606ab3cc948361b4d5b3c2fd85045440" "9700f321820a8214dd416082d99920ee65547dc9e105a13b8c1129509e2b03ad" "ecf0b07a6fc93e7457cc774fcb8f492ff7e1ee27fd5ec36df302c6f17640f320" "2b805a1d8891ba874b1c13d15438d8c221464dc6a53f1ced404492e88815e61f" "58a7093cb01b18092594e22cde0697c124378f6f4f7d8bd0f335daae8cca847c" "e51b64b3ee40a255d533943383d8b95e8860404dc3fee4a12d85ad6df88520e8" "21028363704c73962f891ffaaf5fbeff6e15f3ff14d2cdc91717d1f35520fd75" "1fc67b18dc7c2611168b0d934fa8ca52139260f135d00c41c15839c5ff03956e" "e0f2ab62a01d1e0ac3a6c0a88f86ab0f2e566e6c1de1690948d03fc926ffc018" "d01f39317b2c37ec69aebed69cebf7188233c0c8b637a2340526c43928ff9103" "96181346449fb761db91cdce0ef2ee0d18f7548e8f45837a34a08e788d566e4e" "6c2f5ea7513cb10481f3e7a1a1f85cbf198a16c66d54d65f214b0e7258298e88" "e251fa7d4089e7ec8011edaea7092c44157fce2721bfc39b4be0ad58d3d5bd77" "30367627abb6973bb45355639fe1d97f4b6e36598542e5258ca5f614531737f1" "03d149f1486c23cd49ee3a9035192fc391facaea70d7f42c2e6adf578996c0e8" "caf9e3e3ffa34a132bf1372ac48ae5ff3a94f9da171f87469d6899b5cb704cd0" "efeb0783a4cfb349d9f3f0ee53ead36be1d1febb642e7191a37511a2bbe51a37" "5b8a79dffd95c493aa0e67408e60fb6dc6dabc18d2735c59238202835a78129d" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "6bc387a588201caf31151205e4e468f382ecc0b888bac98b2b525006f7cb3307" "7803ff416cf090613afd3b4c3de362e64063603522d4974bcae8cfa53cf1fd1b" default)))
  '(ecb-options-version "2.50")
- '(fci-rule-color "#383838")
  '(hl-todo-keyword-faces
-	 (quote
-		(("TODO" . "#dc752f")
-		 ("NEXT" . "#dc752f")
-		 ("THEM" . "#2d9574")
-		 ("PROG" . "#4f97d7")
-		 ("OKAY" . "#4f97d7")
-		 ("DONT" . "#f2241f")
-		 ("FAIL" . "#f2241f")
-		 ("DONE" . "#86dc2f")
-		 ("NOTE" . "#b1951d")
-		 ("KLUDGE" . "#b1951d")
-		 ("HACK" . "#b1951d")
-		 ("TEMP" . "#b1951d")
-		 ("FIXME" . "#dc752f")
-		 ("XXX+" . "#dc752f")
-		 ("\\?\\?\\?+" . "#dc752f"))))
- '(inhibit-startup-screen t)
+   (quote
+    (("TODO" . "#dc752f")
+     ("NEXT" . "#dc752f")
+     ("THEM" . "#2d9574")
+     ("PROG" . "#4f97d7")
+     ("OKAY" . "#4f97d7")
+     ("DONT" . "#f2241f")
+     ("FAIL" . "#f2241f")
+     ("DONE" . "#86dc2f")
+     ("NOTE" . "#b1951d")
+     ("KLUDGE" . "#b1951d")
+     ("HACK" . "#b1951d")
+     ("TEMP" . "#b1951d")
+     ("FIXME" . "#dc752f")
+     ("XXX+" . "#dc752f")
+     ("\\?\\?\\?+" . "#dc752f"))))
  '(package-selected-packages
-	 (quote
-		(flycheck-rtags company-rtags rtags cmake-font-lock cmake-mode fic-ext-mode restart-emacs powerline company-jedi jedi spacemacs-theme helm helm-rtags irony-eldoc flycheck-irony company-irony irony flycheck company cyberpunk-2019-theme cyberpunk-theme ansi package-build epl git commander f dash s fill-column-indicator)))
+   (quote
+    (flycheck-rtags company-rtags rtags cmake-font-lock cmake-mode fic-ext-mode restart-emacs powerline company-jedi jedi spacemacs-theme helm helm-rtags irony-eldoc flycheck-irony company-irony irony flycheck company cyberpunk-2019-theme cyberpunk-theme ansi package-build epl git commander f dash s)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -70,14 +68,19 @@
 ;; disable backups
 (setq backup-inhibited t)
 
-;; set the default directory
-(setq default-directory "~/source/repos")
-
 ;; customizations
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
+;; show startup screen only if not opening another file
+(defun splash-screen-conditional()
+  "Open startup screen instead of *scratch* buffer."
+  (when (and (string-equal "*scratch*" (buffer-name)) (not (buffer-file-name)))
+	(display-splash-screen))
+  )
+(add-hook 'after-init-hook 'splash-screen-conditional)
 
 ;; enable ido
 (require 'ido)
@@ -93,13 +96,6 @@
 (req-package fic-mode :require fic-mode :config
   (progn
 	(add-hook 'prog-mode-hook 'fic-ext-mode)))
-;; guideline config
-(require 'fill-column-indicator)
-(add-hook 'prog-mode-hook 'fci-mode)
-(global-linum-mode t)
-(setq fci-rule-width 1)
-(setq fci-rule-color "#FF0000")
-(setq fci-rule-column 80)
 ;; setup helm
 (req-package helm :config
   (progn
