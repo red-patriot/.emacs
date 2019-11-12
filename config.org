@@ -1,0 +1,178 @@
+#+TITLE: EMACS CONFIGURATION FILE
+#+AUTHOR: Bryson Tanner
+
+* Load the package manager and necessary repositories
+#+BEGIN_SRC emacs-lisp
+  (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")))
+  (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+  (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+					  (not (gnutls-available-p))))
+		 (proto (if no-ssl "http" "https")))
+	(add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+	(when (< emacs-major-version 24)
+	  ;; For important compatibility libraries like cl-lib
+	  (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+  (package-initialize)
+  (require 'req-package)
+#+END_SRC
+
+* Custom-set-variables _DO NOT CHANGE THIS SECTION_
+#+BEGIN_SRC emacs-lisp
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(ansi-color-faces-vector
+     [default default default italic underline success warning error])
+   '(ansi-color-names-vector
+     ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+   '(column-number-mode t)
+   '(custom-enabled-themes (quote (black-space)))
+   '(custom-safe-themes
+     (quote
+      ("fb6cebd1238a610c7a500939256a9417c9ccbd228f2253b3c1b2e8d2924308e0" "09dc990596cef636a3d35100a28a8036255b76c1408196ee725484834fa64c4f" "382c8ea9a2b081df8abbc566fe1c36a19c5c4279d957bbf70a6714128acf703c" "f5673650364c1aca202c87d64f7618561358153f2344597397482a92ed0e9762" "6db116ad0ff5898023d2ceeceb2746f264e770660888854f70295d9834145d08" "644eca9fce9281ebc70ac37fc01a4d4013729d2c32e19d917ba3847d3cbfaff9" "f4fd61eb23d0266802031030dd66c8e64cadd1e544eefb2fb2d76bb64be7a83e" "992b267871689983427579650c69e8bf3c92081b773fcfdf9cbc504d7c10dd44" "e62eddaf440e17d975c42a01b8cbd2c2566c56e90a50def0595e4977cfbfb3f8" "e6b05def1214dcab259277190d44bf58e44f03aab0f919381f28b9b01955fb1e" "788ba9f7835a20d6276e657052fe9c73422751cc20d9785ae4d0a6a115e31303" "8abdc2a30b5a3295cbcbeb5d3b39dc8cd61e67e98880091bdeea53908d5b75bc" "526be74df1e8d14dc1c6ae3cc0f6260af39577fa9bc58a82d1be7746710c1180" "b5bd291dc44654554a34790302b677bdabf19c04fae0873edc7f9d572f80aad4" "6ea0208b3fe43718c8f845acc5ce49a5b9e7cb94a599c331377ee89b13d5039e" "fb6c69f485db2469cebbec1cf947d0ee6ff3ada0eeaee18b3f77cdfeb7ead776" "683af32c3e422dc9d2b0e65084b5fedc80fbb422d62a6c35a604a7d5d4cd6038" "b08e12f687332710e287aeb83bd60503e7c9d5c4e569bd93df7616fc53cd618d" "02158f930ff29705b8902d9071c516bbf3aa11026cdd81524be2bbb3d95487e7" "c28c10ff99042fc8cf1da0f94ed54af77ce9a85048b6536ba805e371158591aa" "01d3c43860f609fd522b27438ed1befa67fe1c518729c84e1b4d72cb66a37327" "2ca349f62259b2fe0fb9c8cbb35b88722abf883574175d1a84c58dd3343b28c5" "0dc9276443b11bead7db8dcdc9f18f9942e1a76f98e75f01962c568cda23f9e4" "95c10e614e5771a97865be498452c281606ab3cc948361b4d5b3c2fd85045440" "9700f321820a8214dd416082d99920ee65547dc9e105a13b8c1129509e2b03ad" "ecf0b07a6fc93e7457cc774fcb8f492ff7e1ee27fd5ec36df302c6f17640f320" "2b805a1d8891ba874b1c13d15438d8c221464dc6a53f1ced404492e88815e61f" "58a7093cb01b18092594e22cde0697c124378f6f4f7d8bd0f335daae8cca847c" "e51b64b3ee40a255d533943383d8b95e8860404dc3fee4a12d85ad6df88520e8" "21028363704c73962f891ffaaf5fbeff6e15f3ff14d2cdc91717d1f35520fd75" "1fc67b18dc7c2611168b0d934fa8ca52139260f135d00c41c15839c5ff03956e" "e0f2ab62a01d1e0ac3a6c0a88f86ab0f2e566e6c1de1690948d03fc926ffc018" "d01f39317b2c37ec69aebed69cebf7188233c0c8b637a2340526c43928ff9103" "96181346449fb761db91cdce0ef2ee0d18f7548e8f45837a34a08e788d566e4e" "6c2f5ea7513cb10481f3e7a1a1f85cbf198a16c66d54d65f214b0e7258298e88" "e251fa7d4089e7ec8011edaea7092c44157fce2721bfc39b4be0ad58d3d5bd77" "30367627abb6973bb45355639fe1d97f4b6e36598542e5258ca5f614531737f1" "03d149f1486c23cd49ee3a9035192fc391facaea70d7f42c2e6adf578996c0e8" "caf9e3e3ffa34a132bf1372ac48ae5ff3a94f9da171f87469d6899b5cb704cd0" "efeb0783a4cfb349d9f3f0ee53ead36be1d1febb642e7191a37511a2bbe51a37" "5b8a79dffd95c493aa0e67408e60fb6dc6dabc18d2735c59238202835a78129d" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "6bc387a588201caf31151205e4e468f382ecc0b888bac98b2b525006f7cb3307" "7803ff416cf090613afd3b4c3de362e64063603522d4974bcae8cfa53cf1fd1b" default)))
+   '(ecb-options-version "2.50")
+   '(hl-todo-keyword-faces
+     (quote
+      (("TODO" . "#dc752f")
+       ("NEXT" . "#dc752f")
+       ("THEM" . "#2d9574")
+       ("PROG" . "#4f97d7")
+       ("OKAY" . "#4f97d7")
+       ("DONT" . "#f2241f")
+       ("FAIL" . "#f2241f")
+       ("DONE" . "#86dc2f")
+       ("NOTE" . "#b1951d")
+       ("KLUDGE" . "#b1951d")
+       ("HACK" . "#b1951d")
+       ("TEMP" . "#b1951d")
+       ("FIXME" . "#dc752f")
+       ("XXX+" . "#dc752f")
+       ("\\?\\?\\?+" . "#dc752f"))))
+   '(package-selected-packages
+     (quote
+      (arduino-mode cppcheck yasnippet-snippets yasnippet flycheck-rtags company-rtags cmake-font-lock cmake-mode fic-ext-mode restart-emacs powerline company-jedi jedi spacemacs-theme company-irony flycheck company cyberpunk-2019-theme cyberpunk-theme ansi package-build epl git commander f dash s)))
+   '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e"))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(powerline-active0 ((t (:inherit mode-line :background "blue1" :foreground "SystemWindow"))))
+   '(powerline-active1 ((t (:inherit mode-line :background "medium violet red" :foreground "white"))))
+   '(powerline-active2 ((t (:inherit mode-line :background "black" :foreground "white")))))
+#+END_SRC
+* General Configuration
+** Disable Backup files
+#+BEGIN_SRC emacs-lisp
+  (setq backup-inhibited t)
+#+END_SRC
+** Window Appearance Customizations
+#+BEGIN_SRC emacs-lisp
+  ;; General window appearance
+  (scroll-bar-mode -1)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+  ;; Powerline
+  (require 'powerline)
+  (powerline-default-theme)
+  ;; Splash screen appearance 
+  (defun splash-screen-conditional()
+    "Open startup screen instead of *scratch* buffer."
+    (when (and (string-equal "*scratch*" (buffer-name)) (not (buffer-file-name)))
+            (display-splash-screen))
+    )
+  (add-hook 'after-init-hook 'splash-screen-conditional)
+#+END_SRC
+** Set the Default Dired Directory
+#+BEGIN_SRC emacs-lisp
+  (cd "~/source/repos/")
+#+END_SRC
+** Productivity Customizations
+#+BEGIN_SRC emacs-lisp
+  ;; Custom Keybindings
+  (global-set-key (kbd "C-x p") '(lambda()
+				   (interactive)
+				   (other-window -1)))
+  ;; enable ido
+  (require 'ido)
+  (ido-mode t)
+
+  ;; enable yasnippet
+  (require 'yasnippet)
+  (yas-global-mode 1)
+
+  ;; show line numbers
+  (linum-mode t)
+#+END_SRC
+* Programming Configuration
+** General Programming Configuration
+#+BEGIN_SRC emacs-lisp
+  ;; show parenthesis and use a ruler at 80 columns
+  (add-hook 'prog-mode-hook 'show-paren-mode)
+  (setq fci-rule-color "#ff0000")
+  (setq fci-rule-width 1)
+  (setq fci-rule-use-dashes 0.5)
+  (add-hook 'prog-mode-hook 'fci-mode)
+  (add-hook 'prog-mode-hook 'linum-mode)
+  (add-hook 'prog-mode-hook (lambda() (set-fill-column 80)))
+
+  ;; FIC mode to find TODO, FIXME, BUG, and KLUDGE
+  (req-package fic-mode :require fic-mode :config
+    (progn
+	  (add-hook 'prog-mode-hook 'fic-ext-mode)))
+#+END_SRC
+** C++ Configuration
+#+BEGIN_SRC emacs-lisp
+  (req-package company :config
+    (progn
+	  (add-hook 'after-init-hook 'global-company-mode)
+	  (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
+	  (setq company-idle-delay 0)))
+  (req-package flycheck :config
+    (progn
+	  (global-flycheck-mode)))
+
+  (add-hook 'c++-mode-hook (lambda() (setq-default tab-width 2 indent-tabs-mode nil)))
+  (add-hook 'c-mode-hook (lambda() (setq-default tab-width 2 indent-tabs-mode nil)))
+#+END_SRC
+** CMAKE configuration
+#+BEGIN_SRC emacs-lisp
+  (req-package cmake-mode :require cmake-mode)
+  (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
+  (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
+#+END_SRC
+** Python Congfiguration
+#+BEGIN_SRC emacs-lisp
+  (req-package company-jedi :require company-jedi :config
+    (progn
+	  (defun my-python-mode-hook()
+	    (add-to-list 'company-backends 'company-jedi))
+	  (add-hook 'python-mode-hook 'my-python-mode-hook)))
+  (add-hook 'python-mode-hook (lambda() 
+                                (set-fill-column 80)))
+  (add-hook 'python-mode-hook (lambda() 
+                                (setq-default tab-width 4 indent-tabs-mode nil)))
+#+END_SRC
+
+** Cladder setup
+#+BEGIN_SRC emacs-lisp
+  ;; custom packages for testing purposes
+  (add-to-list 'load-path "~/.emacs.d/custom/")
+  (require 'cladder)
+#+END_SRC
+
+* Custom File Extension-Major Modes
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
+  (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+  (add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-mode))
+  (add-to-list 'auto-mode-alist '("\\.c\\'" . c-mode))
+  (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+#+END_SRC
+* Close the Package Manager
+#+BEGIN_SRC emacs-lisp
+  (req-package-finish)
+#+END_SRC
